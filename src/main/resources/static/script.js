@@ -17,6 +17,7 @@ function calcular() {
 
 
     // Coletar valores dos inputs
+    const valorProcedimento = parseFloat(document.getElementById('valorProcedimento').value) || 0;
     const valorDinheiro = parseFloat(document.getElementById('valorDinheiro').value) || 0;
     const valorCartaoDebito = parseFloat(document.getElementById('valorCartaoDebito').value) || 0;
     const valorCartaoCredito = parseFloat(document.getElementById('valorCartaoCredito').value) || 0;
@@ -26,6 +27,7 @@ function calcular() {
 
     // Montar o DTO
     const requestBody = {
+        valorProcedimento: valorProcedimento,
         valorDinheiro: valorDinheiro,
         valorCartaoDebito: valorCartaoDebito,
         valorCartaoCredito: valorCartaoCredito,
@@ -39,18 +41,18 @@ function calcular() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(requestBody)
     })
-    .then(response => {
-        if (!response.ok) throw new Error('Erro na requisição');
-        return response.json();
-    })
-    .then(data => {
-        resultadoElement.textContent = `R$ ${data.valorPago.toFixed(2).replace('.', ',')}`;
-    })
-    .catch(error => {
-        console.error('Erro:', error);
-        resultadoElement.textContent = 'Erro ao calcular';
-    })
-    .finally(() => {
-        resultadoElement.classList.remove('carregando');
-    });
+        .then(response => {
+            if (!response.ok) throw new Error('Erro na requisição');
+            return response.json();
+        })
+        .then(data => {
+            resultadoElement.textContent = `R$ ${data.valorPago.toFixed(2).replace('.', ',')}`;
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            resultadoElement.textContent = 'Erro ao calcular';
+        })
+        .finally(() => {
+            resultadoElement.classList.remove('carregando');
+        });
 }

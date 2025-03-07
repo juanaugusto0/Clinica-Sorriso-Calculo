@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class FolhaDePagamentoDto {
+    private double valorProcedimento;
     private double valorDinheiro;
     private double valorCartaoDebito;
     private double valorCartaoCredito;

@@ -12,10 +12,10 @@ import com.sorrisodopovo.CalculoDentista.dto.FolhaDePagamentoDto;
 public class CalculoService {
 
     public ResponseEntity<Map<String, Double>> calcularValorDentista(FolhaDePagamentoDto dto) {
-        double valorDentista = dto.getValorDinheiro();
-        valorDentista += 0.85 * dto.getValorCartaoDebito();
-        valorDentista += 0.80 * dto.getValorCartaoCredito();
-        valorDentista += 0.75 * dto.getValorBoleto();
+        double valorDentista = dto.getValorProcedimento();
+        valorDentista -= 0.15 * dto.getValorCartaoDebito();
+        valorDentista -= 0.20 * dto.getValorCartaoCredito();
+        valorDentista -= 0.25 * dto.getValorBoleto();
         valorDentista -= dto.getValorIndicacao();
         if (dto.isComissaoClinica()) {
             valorDentista = 0.30 * valorDentista;
@@ -29,4 +29,5 @@ public class CalculoService {
         return ResponseEntity.ok(resposta);
 
     }
+
 }
