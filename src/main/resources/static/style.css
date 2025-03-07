@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #fff9e6;
+}
+
+header {
+    background-color: #cc0000;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #fff;
+    /* Substituir pelo logo real */
+    background-image: url('download.jpeg');
+    background-size: cover;
+}
+
+.clinic-name {
+    color: #ffd700;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.calculator-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: #cc0000;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input,
+select {
+    padding: 0.5rem;
+    border: 2px solid #ffd700;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.calculate-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: block;
+    margin: 1.5rem auto;
+    transition: background-color 0.3s;
+}
+
+.calculate-btn:hover {
+    background-color: #218838;
+}
+
+.result-container {
+    text-align: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border: 2px dashed #ffd700;
+}
+
+.result-label {
+    color: #cc0000;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+#resultado {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+
+/* ========== RESPONSIVIDADE PARA SMARTPHONES ========== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Empilha elementos verticalmente */
+        text-align: center;
+        padding: 1rem 0.5rem;
+    }
+
+    .clinic-name {
+        font-size: 1.2rem; /* Reduz tamanho do texto */
+        order: -1; /* Coloca o nome acima do logo */
+    }
+
+    .calculator-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .input-grid {
+        grid-template-columns: 1fr; /* 1 coluna em dispositivos móveis */
+    }
+
+    input, select {
+        font-size: 0.9rem; /* Reduz tamanho da fonte */
+        padding: 0.8rem; /* Aumenta área de toque */
+    }
+
+    .calculate-btn {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .clinic-name {
+        font-size: 1rem;
+    }
+    
+    #resultado {
+        font-size: 1.2rem;
+    }
+    
+    .result-label {
+        font-size: 0.9rem;
+    }
+}
