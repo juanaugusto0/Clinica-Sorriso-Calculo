@@ -41,18 +41,21 @@ function calcular() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(requestBody)
     })
-        .then(response => {
-            if (!response.ok) throw new Error('Erro na requisição');
-            return response.json();
-        })
-        .then(data => {
-            resultadoElement.textContent = `R$ ${data.valorPago.toFixed(2).replace('.', ',')}`;
-        })
-        .catch(error => {
-            console.error('Erro:', error);
-            resultadoElement.textContent = 'Erro ao calcular';
-        })
-        .finally(() => {
-            resultadoElement.classList.remove('carregando');
-        });
+    .then(async response => {
+        if (!response.ok) {
+            const errorResponse = await response.json();
+            throw new Error(errorResponse.message);
+        }
+        return response.json();
+    })
+    .then(data => {
+        resultadoElement.textContent = `R$ ${data.valorPago.toFixed(2).replace('.', ',')}`;
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        resultadoElement.textContent = error.message; 
+    })
+    .finally(() => {
+        resultadoElement.classList.remove('carregando');
+    });
 }
