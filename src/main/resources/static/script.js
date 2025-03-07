@@ -1,4 +1,21 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Formatação automática para 2 casas decimais
+    document.querySelectorAll('input[type="number"]').forEach(input => {
+        input.addEventListener('blur', function(e) {
+            if (e.target.value) {
+                const value = parseFloat(e.target.value);
+                e.target.value = !isNaN(value) ? value.toFixed(2) : '';
+            }
+        });
+    });
+});
+
 function calcular() {
+    const resultadoElement = document.getElementById('resultado');
+    resultadoElement.textContent = 'Carregando...';
+    resultadoElement.classList.add('carregando');
+
+
     // Coletar valores dos inputs
     const valorDinheiro = parseFloat(document.getElementById('valorDinheiro').value) || 0;
     const valorCartaoDebito = parseFloat(document.getElementById('valorCartaoDebito').value) || 0;
@@ -17,26 +34,23 @@ function calcular() {
         comissaoClinica: comissaoClinica
     };
 
-    // Fazer a requisição POST
     fetch('/get', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(requestBody)
     })
     .then(response => {
-        if (!response.ok) {
-            throw new Error('Erro na requisição');
-        }
+        if (!response.ok) throw new Error('Erro na requisição');
         return response.json();
     })
     .then(data => {
-        document.getElementById('resultado').textContent = 
-            `R$ ${data.valorPago.toFixed(2).replace('.', ',')}`;
+        resultadoElement.textContent = `R$ ${data.valorPago.toFixed(2).replace('.', ',')}`;
     })
     .catch(error => {
         console.error('Erro:', error);
-        document.getElementById('resultado').textContent = 'Erro ao calcular';
+        resultadoElement.textContent = 'Erro ao calcular';
+    })
+    .finally(() => {
+        resultadoElement.classList.remove('carregando');
     });
 }
