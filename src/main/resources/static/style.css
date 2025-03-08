@@ -22,7 +22,6 @@ header {
     height: 80px;
     border-radius: 50%;
     background-color: #fff;
-    /* Substituir pelo logo real */
     background-image: url('download.jpeg');
     background-size: cover;
 }
@@ -106,17 +105,16 @@ select {
 }
 
 
-/* ========== RESPONSIVIDADE PARA SMARTPHONES ========== */
 @media (max-width: 768px) {
     header {
-        flex-direction: column; /* Empilha elementos verticalmente */
+        flex-direction: column; 
         text-align: center;
         padding: 1rem 0.5rem;
     }
 
     .clinic-name {
-        font-size: 1.2rem; /* Reduz tamanho do texto */
-        order: -1; /* Coloca o nome acima do logo */
+        font-size: 1.2rem; 
+        order: -1; 
     }
 
     .calculator-container {
@@ -125,12 +123,12 @@ select {
     }
 
     .input-grid {
-        grid-template-columns: 1fr; /* 1 coluna em dispositivos móveis */
+        grid-template-columns: 1fr; 
     }
 
     input, select {
-        font-size: 0.9rem; /* Reduz tamanho da fonte */
-        padding: 0.8rem; /* Aumenta área de toque */
+        font-size: 0.9rem; 
+        padding: 0.8rem; 
     }
 
     .calculate-btn {
@@ -176,7 +174,6 @@ input[type="number"]::-webkit-outer-spin-button {
     background-size: 15px;
 }
 
-/* Adicione ao seu CSS existente */
 .carregando {
     color: #666 !important;
     font-style: italic;

@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Formatação automática para 2 casas decimais
     document.querySelectorAll('input[type="number"]').forEach(input => {
         input.addEventListener('blur', function(e) {
             if (e.target.value) {
@@ -16,7 +15,6 @@ function calcular() {
     resultadoElement.classList.add('carregando');
 
 
-    // Coletar valores dos inputs
     const valorProcedimento = parseFloat(document.getElementById('valorProcedimento').value) || 0;
     const valorDinheiro = parseFloat(document.getElementById('valorDinheiro').value) || 0;
     const valorCartaoDebito = parseFloat(document.getElementById('valorCartaoDebito').value) || 0;
@@ -25,7 +23,6 @@ function calcular() {
     const valorIndicacao = parseFloat(document.getElementById('valorIndicacao').value) || 0;
     const comissaoClinica = document.getElementById('comissaoClinica').value === 'SIM';
 
-    // Montar o DTO
     const requestBody = {
         valorProcedimento: valorProcedimento,
         valorDinheiro: valorDinheiro,
